@@ -88,6 +88,9 @@ public class pageConnexion extends JFrame {
 					ResultSet resultSet = st.executeQuery(requeteConnexion);
 					if(resultSet.next()) {
 						JOptionPane.showMessageDialog(contentPane,"Vous êtes connecté."); 
+						pageAccueil accueil = new pageAccueil();
+						accueil.setVisible(true);
+						dispose();
 					} else {
 						JOptionPane.showMessageDialog(contentPane,"ERREUR | Votre identifiant ou votre mot de passe est incorrect.", "Erreur connexion",
 								JOptionPane.ERROR_MESSAGE); 
