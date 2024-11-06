@@ -12,7 +12,7 @@ public class ConnexionBdd {
 			System.out.println("connexion reussie");
 		}
 		catch(Exception ex) {
-			System.out.println(" ERREUR | Problème de connexion à la base de données.");
+			System.out.println(" ERREUR | Problème de connexion à la base de données : " + ex.getMessage());
 		}
 	}
 	public Connection laconnexion() {

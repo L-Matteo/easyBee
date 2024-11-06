@@ -18,37 +18,21 @@ public class pageAccueil extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+	private Utilisateur user; //l'utilisateur connecté avec son rôle
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					pageAccueil frame = new pageAccueil();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
-	public pageAccueil() {
+	public pageAccueil(Utilisateur user) {
+		this.user = user; //initialiser l'utilisateur
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(255, 128, 128));
+		contentPane.setBackground(new Color(255, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JButton btnCommande = new JButton("Passer Commande");
+		btnCommande.setBackground(new Color(128, 128, 255));
 		btnCommande.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -57,11 +41,12 @@ public class pageAccueil extends JFrame {
 		contentPane.add(btnCommande);
 		
 		JButton btnNewButton = new JButton("Liste des commandes");
+		btnNewButton.setBackground(new Color(128, 128, 255));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				if() {
-					listeCommande listeCommande = new listeCommande();
+				if(user.getRole() == 2) {
+					listeCmde listeCommande = new listeCmde(user);
 					listeCommande.setVisible(true);
 					dispose();
 				} else {
@@ -69,13 +54,30 @@ public class pageAccueil extends JFrame {
 							"ERREUR", JOptionPane.ERROR_MESSAGE); 
 				}
 			}
-		});
+		}); 
 		btnNewButton.setBounds(135, 157, 164, 21);
 		contentPane.add(btnNewButton);
 		
 		JLabel lblNewLabel = new JLabel("Page d'accueil");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 18));
-		lblNewLabel.setBounds(150, 36, 164, 13);
+		lblNewLabel.setBounds(150, 36, 164, 21);
 		contentPane.add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("Bienvenue " + user.getLogin());
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblNewLabel_1.setBounds(135, 77, 179, 13);
+		contentPane.add(lblNewLabel_1);
+		
+		JButton btnDeco = new JButton("Deconnexion");
+		btnDeco.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				pageConnexion pageConnexion = new pageConnexion();
+				pageConnexion.setVisible(true);
+				dispose();
+			}
+		});
+		btnDeco.setBackground(new Color(128, 128, 255));
+		btnDeco.setBounds(10, 232, 114, 21);
+		contentPane.add(btnDeco);
 	}
 }

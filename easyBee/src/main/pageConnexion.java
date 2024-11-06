@@ -16,6 +16,7 @@ import java.sql.Statement;
 import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
 import java.awt.Color;
+import java.awt.Font;
 
 public class pageConnexion extends JFrame {
 
@@ -42,14 +43,11 @@ public class pageConnexion extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
 	public pageConnexion() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(450,250,373,300);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(255, 128, 128));
+		contentPane.setBackground(new Color(255, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setTitle("Connexion");
 		setResizable(false);
@@ -58,7 +56,8 @@ public class pageConnexion extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Identifiant :");
-		lblNewLabel.setBounds(110, 46, 71, 20);
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblNewLabel.setBounds(110, 46, 117, 20);
 		contentPane.add(lblNewLabel);
 		
 		textFieldLogin = new JTextField();
@@ -67,7 +66,8 @@ public class pageConnexion extends JFrame {
 		textFieldLogin.setColumns(10);
 		
 		JLabel lblNewLabel_1 = new JLabel("Mot de passe : ");
-		lblNewLabel_1.setBounds(110, 104, 96, 13);
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblNewLabel_1.setBounds(110, 104, 134, 13);
 		contentPane.add(lblNewLabel_1);
 		
 		passwordField = new JPasswordField();
@@ -75,28 +75,36 @@ public class pageConnexion extends JFrame {
 		contentPane.add(passwordField);
 		
 		JButton btnNewButton = new JButton("Connexion");
+		btnNewButton.setBackground(new Color(128, 128, 255));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				String login = textFieldLogin.getText();
 				char[] password = passwordField.getPassword();
 				textFieldLogin.setText(""); // supprimer le texte dans les champs 
 				passwordField.setText("");
+				
 				try {
-					String requeteConnexion = "select identifiant, motDePasse from salarie "
-							+ "where identifiant = '" + login + "' and motDePasse = '" + new String(password) + "'";
+					String requeteConnexion = "select identifiant, motDePasse, idCat from salarie where identifiant = '" 
+							+ login + "' and motDePasse = '" + new String(password) + "'";
 					st=cn.laconnexion().createStatement();
-					ResultSet resultSet = st.executeQuery(requeteConnexion);
-					if(resultSet.next()) {
+					ResultSet rs = st.executeQuery(requeteConnexion);
+					
+					if(rs.next()) {
+						
+						int role = rs.getInt("idCat");
+						Utilisateur user = new Utilisateur(login,new String(password), role);
 						JOptionPane.showMessageDialog(contentPane,"Vous êtes connecté."); 
-						pageAccueil accueil = new pageAccueil();
+						pageAccueil accueil = new pageAccueil(user);
 						accueil.setVisible(true);
-						dispose();
+						dispose(); 
 					} else {
 						JOptionPane.showMessageDialog(contentPane,"ERREUR | Votre identifiant ou votre mot de passe est incorrect.", "Erreur connexion",
 								JOptionPane.ERROR_MESSAGE); 
 					}
+					
 				} catch(SQLException ex) {
-					JOptionPane.showMessageDialog(contentPane,"ERREUR | Problème de connexion à la base de données.", "Problème connexion", 
+					JOptionPane.showMessageDialog(contentPane,"ERREUR | Problème de connexion à la base de données : " + ex.getMessage(), "Problème connexion", 
 							JOptionPane.ERROR_MESSAGE);
 				}
 			}
@@ -106,4 +114,5 @@ public class pageConnexion extends JFrame {
 		
 		
 	}
+	
 }
