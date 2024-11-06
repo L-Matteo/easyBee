@@ -15,6 +15,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
+import java.awt.Color;
 
 public class pageConnexion extends JFrame {
 
@@ -48,8 +49,10 @@ public class pageConnexion extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(450,250,373,300);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(255, 128, 128));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setTitle("Connexion");
+		setResizable(false);
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
