@@ -23,7 +23,7 @@ public class pageAccueil extends JFrame {
 	public pageAccueil(Utilisateur user) {
 		this.user = user; //initialiser l'utilisateur
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(450,250,373,300);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(255, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -37,7 +37,7 @@ public class pageAccueil extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnCommande.setBounds(135, 113, 164, 21);
+		btnCommande.setBounds(96, 116, 164, 21);
 		contentPane.add(btnCommande);
 		
 		JButton btnNewButton = new JButton("Liste des commandes");
@@ -55,17 +55,17 @@ public class pageAccueil extends JFrame {
 				}
 			}
 		}); 
-		btnNewButton.setBounds(135, 157, 164, 21);
+		btnNewButton.setBounds(96, 159, 164, 21);
 		contentPane.add(btnNewButton);
 		
 		JLabel lblNewLabel = new JLabel("Page d'accueil");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 18));
-		lblNewLabel.setBounds(150, 36, 164, 21);
+		lblNewLabel.setBounds(108, 26, 164, 21);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Bienvenue " + user.getLogin());
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNewLabel_1.setBounds(135, 77, 179, 13);
+		lblNewLabel_1.setBounds(104, 71, 179, 13);
 		contentPane.add(lblNewLabel_1);
 		
 		JButton btnDeco = new JButton("Deconnexion");

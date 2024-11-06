@@ -24,7 +24,7 @@ public class listeCmde extends JFrame {
 
 	public listeCmde(Utilisateur user) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(450,250,373,300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -32,7 +32,7 @@ public class listeCmde extends JFrame {
 		contentPane.setLayout(null);
 		
 		JComboBox comboBoxListCmde = new JComboBox();
-		comboBoxListCmde.setBounds(167, 77, 29, 21);
+		comboBoxListCmde.setBounds(161, 75, 29, 21);
 		contentPane.add(comboBoxListCmde);
 		
 		JButton btnRetour = new JButton("Retour");
@@ -49,7 +49,7 @@ public class listeCmde extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("Sélectionner la commande à préparer");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblNewLabel.setBounds(79, 20, 347, 31);
+		lblNewLabel.setBounds(41, 23, 347, 31);
 		contentPane.add(lblNewLabel);
 		
 		JButton btnNewButton = new JButton("Suivant");
@@ -61,7 +61,7 @@ public class listeCmde extends JFrame {
 			}
 		});
 		btnNewButton.setBackground(new Color(128, 128, 255));
-		btnNewButton.setBounds(167, 146, 85, 21);
+		btnNewButton.setBounds(135, 145, 85, 21);
 		contentPane.add(btnNewButton);
 		
 	}
