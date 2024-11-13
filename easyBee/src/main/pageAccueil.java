@@ -50,7 +50,7 @@ public class pageAccueil extends JFrame {
 					listeCommande.setVisible(true);
 					dispose();
 				} else {
-					JOptionPane.showMessageDialog(contentPane,"Vous n'avez pas le rôle nécessaires pour accéder à cette fonctionnalité",
+					JOptionPane.showMessageDialog(contentPane,"Vous n'avez pas le rôle nécessaire pour accéder à cette fonctionnalité",
 							"ERREUR", JOptionPane.ERROR_MESSAGE); 
 				}
 			}
