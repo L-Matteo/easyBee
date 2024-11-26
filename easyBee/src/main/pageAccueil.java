@@ -58,15 +58,15 @@ public class pageAccueil extends JFrame {
 		btnNewButton.setBounds(96, 159, 164, 21);
 		contentPane.add(btnNewButton);
 		
-		JLabel lblNewLabel = new JLabel("Page d'accueil");
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 18));
-		lblNewLabel.setBounds(108, 26, 164, 21);
-		contentPane.add(lblNewLabel);
+		JLabel lblAccueil = new JLabel("Page d'accueil");
+		lblAccueil.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblAccueil.setBounds(108, 26, 164, 21);
+		contentPane.add(lblAccueil);
 		
-		JLabel lblNewLabel_1 = new JLabel("Bienvenue " + user.getLogin());
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNewLabel_1.setBounds(104, 71, 179, 13);
-		contentPane.add(lblNewLabel_1);
+		JLabel lblUser = new JLabel("Bienvenue " + user.getLogin());
+		lblUser.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblUser.setBounds(104, 71, 179, 13);
+		contentPane.add(lblUser);
 		
 		JButton btnDeco = new JButton("Deconnexion");
 		btnDeco.addActionListener(new ActionListener() {

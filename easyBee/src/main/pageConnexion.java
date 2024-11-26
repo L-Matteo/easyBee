@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -74,9 +75,9 @@ public class pageConnexion extends JFrame {
 		passwordField.setBounds(110, 120, 134, 19);
 		contentPane.add(passwordField);
 		
-		JButton btnNewButton = new JButton("Connexion");
-		btnNewButton.setBackground(new Color(128, 128, 255));
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton btnConnexion = new JButton("Se connecter");
+		btnConnexion.setBackground(new Color(128, 128, 255));
+		btnConnexion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				String login = textFieldLogin.getText();
@@ -85,22 +86,25 @@ public class pageConnexion extends JFrame {
 				passwordField.setText("");
 				
 				try {
-					String requeteConnexion = "select identifiant, motDePasse, idCat from salarie where identifiant = '" 
-							+ login + "' and motDePasse = '" + new String(password) + "'";
-					st=cn.laconnexion().createStatement();
-					ResultSet rs = st.executeQuery(requeteConnexion);
-					
-					if(rs.next()) {
+					String requeteConnexion = "select identifiant, motDePasse, idCat from salarie where identifiant = ? and motDePasse = ?";
+					try (PreparedStatement stmt = cn.laconnexion().prepareStatement(requeteConnexion);){
+						stmt.setString(1, login);
+						stmt.setString(2, new String(password));
 						
-						int role = rs.getInt("idCat");
-						Utilisateur user = new Utilisateur(login,new String(password), role);
-						JOptionPane.showMessageDialog(contentPane,"Vous êtes connecté."); 
-						pageAccueil accueil = new pageAccueil(user);
-						accueil.setVisible(true);
-						dispose(); 
-					} else {
-						JOptionPane.showMessageDialog(contentPane,"ERREUR | Votre identifiant ou votre mot de passe est incorrect.", "Erreur connexion",
-								JOptionPane.ERROR_MESSAGE); 
+						try (ResultSet rs = stmt.executeQuery();){
+							if(rs.next()) {
+								
+								int role = rs.getInt("idCat");
+								Utilisateur user = new Utilisateur(login,new String(password), role);
+								JOptionPane.showMessageDialog(contentPane,"Vous êtes connecté."); 
+								pageAccueil accueil = new pageAccueil(user);
+								accueil.setVisible(true);
+								dispose(); 
+							} else {
+								JOptionPane.showMessageDialog(contentPane,"ERREUR | Votre identifiant ou votre mot de passe est incorrect.", "Erreur connexion",
+										JOptionPane.ERROR_MESSAGE); 
+							}
+						}
 					}
 					
 				} catch(SQLException ex) {
@@ -109,8 +113,8 @@ public class pageConnexion extends JFrame {
 				}
 			}
 		});
-		btnNewButton.setBounds(110, 169, 134, 21);
-		contentPane.add(btnNewButton);
+		btnConnexion.setBounds(110, 169, 134, 21);
+		contentPane.add(btnConnexion);
 		
 		
 	}

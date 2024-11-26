@@ -32,8 +32,20 @@ public class listeCmde extends JFrame {
 		contentPane.setLayout(null);
 		
 		JComboBox comboBoxListCmde = new JComboBox();
-		comboBoxListCmde.setBounds(161, 75, 29, 21);
+		comboBoxListCmde.setBounds(88, 86, 183, 21);
 		contentPane.add(comboBoxListCmde);
+		
+		String requete = "Select nomCommande from cmdeapprodepot where statutCommande like '%en attente%'";
+		try {
+			st=cn.laconnexion().createStatement();
+			ResultSet rs = st.executeQuery(requete);
+			while (rs.next()) {
+		        String nomCommande = rs.getString("nomCommande");
+		        comboBoxListCmde.addItem(nomCommande);
+		    }
+		} catch(Exception e) {
+			System.out.println("Erreur");
+		}
 		
 		JButton btnRetour = new JButton("Retour");
 		btnRetour.setBackground(new Color(128, 128, 255));
@@ -47,10 +59,10 @@ public class listeCmde extends JFrame {
 		btnRetour.setBounds(10, 232, 85, 21);
 		contentPane.add(btnRetour);
 		
-		JLabel lblNewLabel = new JLabel("Sélectionner la commande à préparer");
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblNewLabel.setBounds(41, 23, 347, 31);
-		contentPane.add(lblNewLabel);
+		JLabel lblSelectCdm = new JLabel("Sélectionner la commande à préparer");
+		lblSelectCdm.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblSelectCdm.setBounds(41, 23, 347, 31);
+		contentPane.add(lblSelectCdm);
 		
 		JButton btnNewButton = new JButton("Suivant");
 		btnNewButton.addActionListener(new ActionListener() {
