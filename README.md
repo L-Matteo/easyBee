@@ -20,7 +20,7 @@ Importer le fichier *data.sql* pour ajouter les données de test.
 #### Application :  
 Importer le code source dans votre IDE (Eclipse, Intellij,etc.).  
     
-## Auteurs
+## Auteur
 
 - [@L-Matteo](https://github.com/L-Matteo)
 
