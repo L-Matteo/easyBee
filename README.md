@@ -30,7 +30,9 @@ hhgg
     - Sélectionner l'option "Importer un projet existant" ou équivalent.
  3. Configurez les paramètres de connexion à la base de données dans le fichier *ConnexionBdd.java*.
 #### Lancement :
- class main
+ 1. Ouvrez le fichier *pageConnexion.java*.
+ 2. Executez le code pour lancer l'application.
+
 
 
 ## 👤Auteur
