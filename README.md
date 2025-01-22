@@ -27,11 +27,12 @@ hhgg
  1. Clonez ou téléchargez ce dépot.
  2. Importez le code source dans votre IDE préféré :
     - Ouvrez votre IDE.
-    - Sélectionner l'option "Importer un projet existant" ou équivalent.
+    - Sélectionnez l'option "Importer un projet existant" ou équivalent.
  3. Configurez les paramètres de connexion à la base de données dans le fichier *ConnexionBdd.java*.
 #### Lancement :
  1. Ouvrez le fichier *pageConnexion.java*.
  2. Executez le code pour lancer l'application.
+ 3. Connectez-vous avec les identifiants présents dans les données de test. 
 
 
 
