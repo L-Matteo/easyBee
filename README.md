@@ -21,14 +21,14 @@ hhgg
 
 ## 🚀 Installation  
 #### Base de données :
- 1. Importer le fichier  *bdd.sql* dans votre serveur de base de données pour créer la structure de la base.   
- 2. Importer le fichier *data.sql* pour y ajouter les données de test.  
+ 1. Importez le fichier  *bdd.sql* dans votre serveur de base de données pour créer la structure de la base.   
+ 2. Importez le fichier *data.sql* pour y ajouter les données de test.  
 #### Application :  
  1. Clonez ou téléchargez ce dépot.
  2. Importez le code source dans votre IDE préféré :
     - Ouvrez votre IDE.
     - Sélectionner l'option "Importer un projet existant" ou équivalent.
- 3. Configurez les paramètres de connexion à la base de données dans le fichier ...
+ 3. Configurez les paramètres de connexion à la base de données dans le fichier *ConnexionBdd.java*.
 #### Lancement :
  class main
 
